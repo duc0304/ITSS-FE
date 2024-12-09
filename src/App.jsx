@@ -6,6 +6,7 @@ import Display from './pages/display';
 import ForgotPassword from './pages/forgot-password';
 import Personal from './pages/personal';
 import Detail from './pages/detail';
+import Search from './pages/search';
 import './App.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/personal" element={<Personal />} />
             <Route path="/detail" element={<Detail />} />
+            <Route path="/search" element={<Search />} />
             <Route path="/" element={<Navigate to="/display" replace />} />
         </Routes>
     );
