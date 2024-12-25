@@ -1,5 +1,5 @@
-import React from 'react';
-import { AiFillStar, AiOutlineStar, AiOutlineClockCircle, AiOutlinePhone, AiOutlineEnvironment } from 'react-icons/ai';
+import React, { useState } from 'react';
+import { AiFillStar, AiOutlineStar, AiOutlineClockCircle, AiOutlinePhone, AiOutlineEnvironment, AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import Header from '../components/header/Header';
 import './detail.css';
 
@@ -23,6 +23,12 @@ function Detail() {
         // Thêm nhiều items khác...
     ];
 
+    const [isFavorite, setIsFavorite] = useState(false);
+
+    const toggleFavorite = () => {
+        setIsFavorite(!isFavorite);
+    };
+
     const renderStars = (rating) => {
         const stars = [];
         for (let i = 1; i <= 5; i++) {
@@ -44,7 +50,18 @@ function Detail() {
                         <img src="/highlands.jpg" alt="Highlands Coffee" />
                     </div>
                     <div className="cafe-info">
-                        <h1>{cafeInfo.name}</h1>
+                        <div className="cafe-header">
+                            <h1>{cafeInfo.name}</h1>
+                            <button 
+                                className="favorite-btn"
+                                onClick={toggleFavorite}
+                            >
+                                {isFavorite ? 
+                                    <AiFillHeart className="heart-icon filled" /> : 
+                                    <AiOutlineHeart className="heart-icon" />
+                                }
+                            </button>
+                        </div>
                         <div className="rating">
                             {renderStars(cafeInfo.rating)}
                             <span className="rating-number">({cafeInfo.rating})</span>
